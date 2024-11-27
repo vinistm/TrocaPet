@@ -1,10 +1,16 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash   
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///seu_banco.db'  # Nome do arquivo do banco de dados
-app.config['SECRET_KEY'] = 'sua_chave_secreta'  # Chave secreta para sessões (troque por uma chave forte)
+
+app = Flask(__name__)   
+
+
+# URL de conexão interna fornecida pelo Render
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://pet_d2gc_user:JhoUoF7zYeyL4dvj0Pu28JZ95rbdQtTB@dpg-ct3n2apu0jms73a2fopg-a:5432/pet_d2gc'  
+
+app.config['SECRET_KEY'] = '2236'  # Substitua por uma chave secreta forte
 db = SQLAlchemy(app)
 
 
