@@ -1,0 +1,167 @@
+/* Importação de fontes (opcional) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+/* Estilos gerais */
+body {
+  font-family: "Poppins", sans-serif; /* Fonte moderna e amigável */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o conteúdo ocupe a tela toda */
+  margin: 0;
+  background-color: #f8f8f8; /* Cor de fundo suave */
+}
+
+.Cabecalho {
+  background-color: #f0d9b5; /* Cor pastel suave */
+  padding: 20px;
+  text-align: center;
+}
+
+.Cabecalho h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #333;
+}
+
+/* Sessão 1 (Meus Produtos e Buscar Produto) */
+.sessao-1 {
+  display: flex;
+  flex-direction: column; /* Em telas menores, coloca um abaixo do outro */
+  gap: 20px;
+  padding: 20px;
+}
+
+.Produto,
+.Busca {
+  background-color: #fff;
+  border-radius: 10px; /* Cantos arredondados */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.Produto h2,
+.Busca h2 {
+  margin-top: 0;
+  color: #e98b39; /* Cor de destaque */
+}
+
+.Produto ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Produto li {
+  margin-bottom: 10px;
+}
+
+.Busca form {
+  display: flex;
+  flex-direction: column; /* Em telas menores, coloca um abaixo do outro */
+  gap: 10px;
+}
+
+.Busca input[type="text"],
+.Busca select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Sessão Cadastrar Produto */
+.Cadastrar {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.Cadastrar h2 {
+  margin-top: 0;
+  color: #e98b39;
+}
+
+.Cadastrar label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.Cadastrar input,
+.Cadastrar select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.Cadastrar button[type="submit"] {
+  background-color: #e98b39;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Link Sair */
+a {
+  color: #e98b39;
+  text-decoration: none;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .sessao-1 {
+    flex-direction: row; /* Em telas maiores, coloca lado a lado */
+  }
+
+  .Produto,
+  .Busca {
+    width: 48%; /* Ajusta a largura para ocupar metade da tela */
+  }
+
+  .Busca form {
+    flex-direction: row; /* Em telas maiores, coloca os campos lado a lado */
+    align-items: center;
+  }
+
+  .Busca input[type="text"] {
+    flex-grow: 1; /* Faz o campo de texto ocupar o espaço disponível */
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Página Principal</title>
+    <link
+      rel="stylesheet"
+      href="/static/css/styles_index.css
+    "
+    />
+  </head>
+  <body>
+    <div class="Cabecalho">
+      <h1>Bem-vindo, {{ usuario.nome }}!</h1>
+      <a href="{{ url_for('logout') }}?t={{ timestamp }}">Sair</a>
+    </div>
+    <div class="sessao-1">
+      <div class="Produto">
+        <h2>Meus Produtos</h2>
+        <ul>
+          {% for produto in usuario.produtos %}
+          <li>
+            {{ produto.nome }} ({{ produto.quantidade }} {{
+            produto.unidade_medida }}) - {% if produto.disponivel %} Disponível
+            <a
+              href="{{ url_for('alterar_disponibilidade', produto_id=produto.id) }}"
+              >Tornar Indisponível</a
+            >
+            {% else %} Indisponível
+            <a
+              href="{{ url_for('alterar_disponibilidade', produto_id=produto.id) }}"
+              >Tornar Disponível</a
+            >
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="Busca">
+        <h2>Buscar Produto</h2>
+        <form method="GET" action="{{ url_for('buscar_produto') }}">
+          <input
+            type="text"
+            name="nome_produto"
+            placeholder="Nome do produto"
+          />
+          <select name="especie_pet">
+            <option value="">Todas as espécies</option>
+            <option value="cachorro">Cachorro</option>
+            <option value="gato">Gato</option>
+          </select>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="Cadastrar">
+      <h2>Cadastrar Produto</h2>
+      <form method="POST" action="{{ url_for('cadastrar_produto') }}">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required /><br /><br />
+
+        <label for="descricao">Descrição:</label>
+        <input
+          type="text"
+          name="descricao"
+          id="descricao"
+          required
+        /><br /><br />
+
+        <label for="observacao">Observação:</label>
+        <input
+          type="text"
+          name="observacao"
+          id="observacao"
+          required
+        /><br /><br />
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" name="quantidade" id="quantidade" list="unidades" />
+        <datalist id="unidades">
+          <option value="ml"></option>
+          <option value="comprimidos"></option>
+          <option value="unidades"></option>
+          <option value="g"></option>
+          <option value="kg"></option></datalist
+        ><br /><br />
+
+        <label for="unidade_medida">Unidade de Medida:</label>
+        <select name="unidade_medida" id="unidade_medida">
+          <option value="ml">ml</option>
+          <option value="comprimidos">comprimidos</option>
+          <option value="unidades">unidades</option>
+          <option value="g">g</option>
+          <option value="kg">kg</option></select
+        ><br /><br />
+
+        <label for="vencimento">Vencimento:</label>
+        <input
+          type="date"
+          name="vencimento"
+          id="vencimento"
+          required
+        /><br /><br />
+        <label for="especie_pet">Espécie do Pet:</label>
+        <select name="especie_pet" id="especie_pet">
+          <option value="gato">Gato</option>
+          <option value="cachorro">Cachorro</option></select
+        ><br /><br />
+        <label for="disponivel">Disponível:</label>
+        <input
+          type="checkbox"
+          name="disponivel"
+          id="disponivel"
+          checked
+        /><br /><br />
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </body>
+</html>

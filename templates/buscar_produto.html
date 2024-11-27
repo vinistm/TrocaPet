@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buscar Produto</title>
+    <link rel="stylesheet" href="/static/css/style_busca_produto.css" />
+  </head>
+  <body>
+    <h1>Resultados da Busca</h1>
+
+    {% if produtos %}
+    <ul>
+      {% for produto in produtos %}
+      <li>
+        Produto : {{ produto.nome }} , Quantidade : {{ produto.quantidade }} ,
+        Disponível : {% if produto.disponivel %} Disponível {% else %}
+        Indisponível {% endif %} , Usuario:
+        <a
+          href="#"
+          onclick="abrirModal('{{ produto.usuario.nome }}', '{{ produto.usuario.email }}', '{{ produto.usuario.ddd }}', '{{ produto.usuario.telefone }}')"
+          >{{ produto.usuario.nome }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum produto encontrado.</p>
+    {% endif %}
+
+    <a href="{{ url_for('principal', usuario_id=session['usuario_id']) }}"
+      >Voltar</a
+    >
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <p>Nome: <span id="modal-nome"></span></p>
+        <p>Email: <span id="modal-email"></span></p>
+        <p>
+          Telefone: (<span id="modal-ddd"></span>)
+          <span id="modal-telefone"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function abrirModal(nome, email, ddd, telefone) {
+        document.getElementById("modal-nome").innerText = nome;
+        document.getElementById("modal-email").innerText = email;
+        document.getElementById("modal-ddd").innerText = ddd;
+        document.getElementById("modal-telefone").innerText = telefone;
+        document.getElementById("myModal").style.display = "block";
+      }
+
+      function fecharModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

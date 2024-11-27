@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Produto</title>
+  </head>
+  <body>
+    <h1>Editar Produto</h1>
+    <form
+      method="POST"
+      action="{{ url_for('editar_produto', produto_id=produto.id) }}"
+    >
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        name="nome"
+        id="nome"
+        value="{{ produto.nome }}"
+        required
+      /><br /><br />
+
+      <label for="descricao">Descrição:</label>
+      <input
+        type="text"
+        name="descricao"
+        id="descricao"
+        value="{{ produto.descricao }}"
+        required
+      /><br /><br />
+
+      <label for="observacao">Observação:</label>
+      <input
+        type="text"
+        name="observacao"
+        id="observacao"
+        value="{{ produto.observacao }}"
+        required
+      /><br /><br />
+
+      <label for="quantidade">Quantidade:</label>
+      <input
+        type="number"
+        name="quantidade"
+        id="quantidade"
+        value="{{ produto.quantidade }}"
+        required
+      /><br /><br />
+
+      <label for="unidade_medida">Unidade de Medida:</label>
+      <input
+        type="text"
+        name="unidade_medida"
+        id="unidade_medida"
+        value="{{ produto.unidade_medida }}"
+      /><br /><br />
+
+      <label for="vencimento">Vencimento:</label>
+      <input
+        type="date"
+        name="vencimento"
+        id="vencimento"
+        value="{{ produto.vencimento }}"
+        required
+      /><br /><br />
+
+      <button type="submit">Salvar Alterações</button>
+    </form>
+    <a href="{{ url_for('principal') }}">Voltar</a>
+  </body>
+</html>
