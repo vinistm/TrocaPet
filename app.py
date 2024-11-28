@@ -1,17 +1,17 @@
-import os
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash 
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
-app = Flask(__name__) 
 
+app = Flask(__name__)
 
-# URL de conexão interna fornecida pelo Render
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://pet_d2gc_user:JhoUoF7zYeyL4dvj0Pu28JZ95rbdQtTB@dpg-ct3n2apu0jms73a2fopg-a.oregon-postgres.render.com/pet_d2gc'  
-app.config['SECRET_KEY'] = '2236'  # Substitua por uma chave secreta forte
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco_teste.db' 
+
+app.config['SECRET_KEY'] = '2236' 
+
 db = SQLAlchemy(app)
-
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,9 +29,9 @@ class Produto(db.Model):
     quantidade = db.Column(db.Integer, nullable=False)
     observacao = db.Column(db.String(200))
     unidade_medida = db.Column(db.String(20))
-    vencimento = db.Column(db.String(10), nullable=False)  # Formato: YYYY-MM-DD
+    vencimento = db.Column(db.String(10), nullable=False)  
     especie_pet = db.Column(db.String(20))
-    disponivel = db.Column(db.Boolean, default=True)  # Disponibilidade do produto
+    disponivel = db.Column(db.Boolean, default=True) 
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     usuario = db.relationship('Usuario', backref='produtos')
 
@@ -146,11 +146,11 @@ def buscar_produto():
         return redirect(url_for('login'))
 
     nome_produto = request.args.get('nome_produto')
-    especie_pet = request.args.get('especie_pet')  # Obter a espécie do pet do formulário
+    especie_pet = request.args.get('especie_pet') 
 
     query = Produto.query.filter(Produto.nome.ilike(f'%{nome_produto}%')) 
 
-    if especie_pet:  # Filtrar por espécie se uma opção for selecionada
+    if especie_pet: 
         query = query.filter(Produto.especie_pet == especie_pet)
 
     produtos = query.all()

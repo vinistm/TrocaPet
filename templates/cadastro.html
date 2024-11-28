@@ -2,49 +2,68 @@
 <html>
   <head>
     <title>Cadastro</title>
+    <link rel="stylesheet" href="/static/css/style_cadastro.css" />
   </head>
   <body>
-    <h1>Cadastro</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %}
-    <ul class="flashes">
-      {% for category, message in messages %}
-      <li class="{{ category }}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
-    <form method="POST" action="{{ url_for('cadastro') }}">
-      <label for="nome">Nome:</label>
-      <input type="text" name="nome" id="nome" required /><br /><br />
+    <div>
+      <h1>Cadastro</h1>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+      <div class="Cadastro">
+        <form method="POST" action="{{ url_for('cadastro') }}">
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome" id="nome" required /><br /><br />
 
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required /><br /><br />
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" required /><br /><br />
 
-      <label for="ddd">DDD:</label>
-      <input type="ddd" name="ddd" id="ddd" required /><br /><br />
+          <label for="ddd">DDD:</label>
+          <input type="ddd" name="ddd" id="ddd" required /><br /><br />
 
-      <label for="telefone">Telefone:</label>
-      <input
-        type="telefone"
-        name="telefone"
-        id="telefone"
-        required
-      /><br /><br />
+          <label for="telefone">Telefone:</label>
+          <input
+            type="telefone"
+            name="telefone"
+            id="telefone"
+            required
+          /><br /><br />
 
-      <label for="senha">Senha:</label>
-      <input type="password" name="senha" id="senha" required /><br /><br />
+          <label for="senha">Senha:</label>
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            required
+            pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}"
+            onkeyup="verificarSenha()"
+            title="A senha deve conter pelo menos 6 caracteres, uma letra maiúscula, um número e um caractere especial."
+          />
+          <br /><br />
 
-      <label for="senha_confirmacao">Confirmar Senha:</label>
-      <input
-        type="password"
-        name="senha_confirmacao"
-        id="senha_confirmacao"
-        required
-      /><br /><br />
+          <div id="forca-senha">
+            <span id="barra-senha"></span>
+            <span id="texto-senha"></span>
+          </div>
 
-      <button type="submit">Cadastrar</button>
-    </form>
+          <label for="senha_confirmacao">Confirmar Senha:</label>
+          <input
+            type="password"
+            name="senha_confirmacao"
+            id="senha_confirmacao"
+            required
+          /><br /><br />
 
-    <a href="{{ url_for('login') }}">Voltar</a>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <a href="{{ url_for('login') }}">Voltar</a>
+    </div>
+    <script src="/static/js/script.js"></script>
   </body>
 </html>

@@ -1,18 +1,16 @@
-/* Importação de fontes (opcional) */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-/* Estilos gerais */
 body {
-  font-family: "Poppins", sans-serif; /* Fonte moderna e amigável */
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garante que o conteúdo ocupe a tela toda */
+  min-height: 100vh;
   margin: 0;
-  background-color: #f8f8f8; /* Cor de fundo suave */
+  background-color: #f8f8f8;
 }
 
 .Cabecalho {
-  background-color: #f0d9b5; /* Cor pastel suave */
+  background-color: #f0d9b5;
   padding: 20px;
   text-align: center;
   display: flex;
@@ -26,10 +24,9 @@ body {
   color: #333;
 }
 
-/* Sessão 1 (Meus Produtos e Buscar Produto) */
 .sessao-1 {
   display: flex;
-  flex-direction: column; /* Em telas menores, coloca um abaixo do outro */
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
 }
@@ -37,15 +34,15 @@ body {
 .Produto,
 .Busca {
   background-color: #fff;
-  border-radius: 10px; /* Cantos arredondados */
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .Produto h2,
 .Busca h2 {
   margin-top: 0;
-  color: #e98b39; /* Cor de destaque */
+  color: #e98b39;
 }
 
 .Produto ul {
@@ -59,7 +56,7 @@ body {
 
 .Busca form {
   display: flex;
-  flex-direction: column; /* Em telas menores, coloca um abaixo do outro */
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -70,7 +67,6 @@ body {
   border-radius: 5px;
 }
 
-/* Sessão Cadastrar Produto */
 .Cadastrar {
   background-color: #fff;
   border-radius: 10px;
@@ -107,29 +103,27 @@ body {
   cursor: pointer;
 }
 
-/* Link Sair */
 a {
   color: #e98b39;
   text-decoration: none;
 }
 
-/* Responsividade */
 @media (min-width: 768px) {
   .sessao-1 {
-    flex-direction: row; /* Em telas maiores, coloca lado a lado */
+    flex-direction: row;
   }
 
   .Produto,
   .Busca {
-    width: 48%; /* Ajusta a largura para ocupar metade da tela */
+    width: 48%;
   }
 
   .Busca form {
-    flex-direction: row; /* Em telas maiores, coloca os campos lado a lado */
+    flex-direction: row;
     align-items: center;
   }
 
   .Busca input[type="text"] {
-    flex-grow: 1; /* Faz o campo de texto ocupar o espaço disponível */
+    flex-grow: 1;
   }
 }
